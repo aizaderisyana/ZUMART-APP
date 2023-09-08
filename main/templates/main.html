@@ -1,0 +1,21 @@
+<h1>ZUMART</h1>
+<h2>Products</h2>
+<h1 style="background-color: #2a5bd1;">ZUMART</h1>>
+
+    {% for i in context %}
+        <h5>Name:</h5>
+        <p>{{ name }}</p>
+
+        <h5>Stock:</h5>
+        <p>{{ context.amount.forloop.counter0 }}</p>
+
+        <h5>Type:</h5>
+        <p>{{ context.description.forloop.counter0 }}</p>
+
+        <h5>Size:</h5>
+        <p>{{ context.size.forloop.counter0 }}</p>
+
+        <h5>Price:</h5>
+        <p>{{ context.price.forloop.counter0 }}</p>
+    {% endfor %}
+
