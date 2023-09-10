@@ -1,0 +1,10 @@
+[
+    {
+        "model":"product.Product",
+        "fields":{
+            "name":"Mencuri Raden Saleh",
+            "amount":4,
+            "description":"Kayaknya seru deh tapi waktu nonton lagi banyak tugas jadi pusing"
+        }
+}
+]
