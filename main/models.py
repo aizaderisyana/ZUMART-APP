@@ -6,4 +6,4 @@ class Product(models.Model):
     amount = models.IntegerField()
     description = models.TextField()
     size = models.IntegerField()
-    stock = models.IntegerField
+    price = models.IntegerField()
