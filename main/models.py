@@ -3,7 +3,6 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    amount = models.IntegerField()
+    kelas = models.CharField(max_length=255)
     description = models.TextField()
-    size = models.IntegerField()
-    price = models.IntegerField()
+    appName = models.CharField(max_length=255)

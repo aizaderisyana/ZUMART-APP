@@ -1,72 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ZUMART</title>
-</head>
-<body>
-    <h1 style="background-color: #2a5bd1;">ZUMART</h1>
+<h1 style="background-color: #2a5bd1;">{{appName}}</h1>
+<p>{{ description }}<p>
 
-    <h2>Products</h2>
-
-    <h4>Nike Air Jordan 1</h4>
-    <table>
-        </tr>
-        {% for key, value in NAJ.items %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h4>Adidas Samba</h4>
-    <table>
-        </tr>
-        {% for key, value in AS.items %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h4>NB 550</h4>
-    <table>
-        </tr>
-        {% for key, value in NB550.items %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h4>Nike Dunk Low</h4>
-    <table>
-        </tr>
-        {% for key, value in NDL.items %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h4>Converse Chuck Taylor</h4>
-    <table>
-        </tr>
-        {% for key, value in CCT.items %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-
-
-
-
-
-</body>
-</html>
+<h5>Name: </h5>
+<p>{{ name }}<p>
+<h5>Class: </h5>
+<p>{{ kelas }}<p>
