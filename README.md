@@ -22,7 +22,7 @@ Kelas   : PBP C
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-Client Request
+  Client Request
 
        |
        V
@@ -42,27 +42,26 @@ Client Request
        |
        V
 
-   berkas HTML
+   berkas HTML       
 
-    Client Request
-    Seorang pengguna, biasanya melalui peramban webnya, mengirimkan permintaan HTTP ke URL tertentu dalam aplikasi Django.
+   Client Request
+   Seorang pengguna, biasanya melalui peramban webnya, mengirimkan permintaan HTTP ke URL tertentu dalam aplikasi Django.
 
-    urls.py:
-    Berkas yang dikenal dengan sebutan urls.py memiliki tugas penting, yaitu mengarahkan permintaan dari pengguna ke fungsi yang sesuai dalam berkas views.py. Ini menjelaskan bagaimana URL yang diterima akan diarahkan ke tampilan yang benar.
-    Pada tahap ini, urls.py akan menganalisis URL yang diterima dari permintaan dan mencocokkannya dengan pola URL yang telah ditentukan sebelumnya. Jika ada kesesuaian, maka permintaan akan diarahkan dengan tepat ke tampilan yang sesuai.
+   urls.py:
+   Berkas yang dikenal dengan sebutan urls.py memiliki tugas penting, yaitu mengarahkan permintaan dari pengguna ke fungsi yang sesuai dalam berkas views.py. Ini menjelaskan bagaimana URL yang diterima akan diarahkan ke tampilan yang benar.
+   Pada tahap ini, urls.py akan menganalisis URL yang diterima dari permintaan dan mencocokkannya dengan pola URL yang telah ditentukan sebelumnya. Jika ada kesesuaian, maka permintaan akan diarahkan dengan tepat ke tampilan yang sesuai.
 
-    views.py:
-    Dalam berkas yang disebut views.py ini, terdapat tampilan-tampilan (views) yang mengandung logika bisnis dari aplikasi dan persiapan data.
-    Saat permintaan dari pengguna masuk, berkas views.py akan melakukan pemrosesan yang dibutuhkan, berinteraksi dengan Model (jika diperlukan), dan menyiapkan data yang akan ditampilkan dalam tampilan HTML.
-    
-    models.py:
-    Berkas dengan nama models.py berperan penting dalam mendefinisikan model-data yang digunakan dalam aplikasi. Berkas ini merincikan struktur dan skema basis data yang digunakan oleh aplikasi.
-    Apabila permintaan dari pengguna memerlukan akses atau pengubahan data, berkas views.py akan berinteraksi dengan Model untuk mengambil atau mengubah data sesuai kebutuhan.
+   views.py:
+   Dalam berkas yang disebut views.py ini, terdapat tampilan-tampilan (views) yang mengandung logika bisnis dari aplikasi dan persiapan data.
+   Saat permintaan dari pengguna masuk, berkas views.py akan melakukan pemrosesan yang dibutuhkan, berinteraksi dengan Model (jika diperlukan), dan menyiapkan data yang akan ditampilkan dalam tampilan HTML.
+   
+   models.py:
+   Berkas dengan nama models.py berperan penting dalam mendefinisikan model-data yang digunakan dalam aplikasi. Berkas ini merincikan struktur dan skema basis data yang digunakan oleh aplikasi.
+   Apabila permintaan dari pengguna memerlukan akses atau pengubahan data, berkas views.py akan berinteraksi dengan Model untuk mengambil atau mengubah data sesuai kebutuhan.
 
-    HTML Template:
-    BBerkas HTML Template berfungsi untuk merender tampilan yang akan dikirimkan kembali kepada pengguna.
-                
-
+   HTML Template:
+   BBerkas HTML Template berfungsi untuk merender tampilan yang akan dikirimkan kembali kepada pengguna.
+               
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
     Virtual environment adalah alat penting dalam pengembangan perangkat lunak yang memungkinkan isolasi serta manajemen yang efisien terhadap dependensi yang digunakan dalam suatu proyek. Virtual environment memastikan bahwa setiap proyek memiliki wadah terpisah yang disebut environment untuk mengelola pustaka-pustaka dan paket-paket Python yang dibutuhkan, serta memungkinkan pemilihan versi Python yang sesuai.
     
