@@ -1,6 +1,7 @@
-Nama    : Aiza Derisyana
-NPM     : 2206082436
-Kelas   : PBP C
+Nama        : Aiza Derisyana
+NPM         : 2206082436
+Kelas       : PBP C
+Adaptable   : https://zumartapp.adaptable.app
 
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
    Cara saya mengimplementasikan chacklist tersebut adalah dengan cara:
