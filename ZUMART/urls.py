@@ -21,5 +21,5 @@ Including another URLconf
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('main.urls')),
-    path('http://zumartapp-app-app-0f733f92c9c64e2ae-k3iv5j7tmq-uc.a.run.app/main', include('main.urls')),
+    
 ]
