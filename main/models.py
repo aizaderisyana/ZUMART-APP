@@ -6,3 +6,4 @@ class Product(models.Model):
     kelas = models.CharField(max_length=255)
     description = models.TextField()
     appName = models.CharField(max_length=255)
+    amount = models.IntegerField()
