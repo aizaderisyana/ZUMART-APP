@@ -28,39 +28,9 @@ Adaptable   : https://zumartapp.adaptable.app
   
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+<img width="894" alt="fc pbpb" src="https://github.com/aizaderisyana/ZUMART-APP/assets/82081149/a9982139-f38e-4a67-b284-c41632a4fefc">
 
-  Client Request
 
-       |
-       V
-
-    urls.py
-
-       |
-       V
-
-    views.py 
-
-       |
-       V
-
-    models.py 
-
-       |
-       V
-
-   berkas HTML       
-
-   Client Request yaitu pengguna yang biasanya melalui webnya mengirimkan permintaan HTTP ke URL tertentu dalam aplikasi Django.
-
-   urls.py merupakan berkas yang memiliki tugas untuk mengarahkan permintaan dari pengguna ke fungsi yang sesuai dalam berkas views.py. Pada tahap ini, urls.py akan menganalisis URL yang diterima dari permintaan dan mencocokkannya dengan pola URL yang telah ditentukan sebelumnya. Jika ada kesesuaian, maka permintaan akan diarahkan dengan tepat ke tampilan yang sesuai.
-
-   views.py memberikan tampilan-tampilan yang mengandung logika dari aplikasi dan persiapan data. Saat terjadi  Client Request, berkas views.py akan melakukan pemrosesan yang dibutuhkan, berinteraksi dengan models.py dan menyiapkan data yang akan ditampilkan dalam HTML.
-   
-   models.py memberikan definisi model-data yang digunakan dalam aplikasi. Berkas ini merincikan struktur dan skema basis data yang digunakan oleh aplikasi. Jika Client Request memerlukan akses atau pengubahan data, berkas views.py akan berinteraksi dengan models.py untuk mengambil atau mengubah data sesuai kebutuhan.
-
-   HTML Template berfungsi untuk merender tampilan dari pengguna, views.py dan models.py yang akan dikirimkan kembali kepada pengguna.
-               
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
     Virtual environment adalah alat yang penting dalam pengembangan perangkat lunak. Ini memungkinkan kita untuk mengisolasi dan mengelola dependensi yang digunakan dalam proyek dengan efisien. Dengan menggunakan virtual environment, setiap proyek memiliki lingkungan terpisah untuk mengatur pustaka dan paket Python yang diperlukan, serta memungkinkan kita untuk memilih versi Python yang cocok.
     Secara teknis mungkin untuk mengembangkan aplikasi web berbasis Django tanpa menggunakan virtual environment, namun praktik ini lebih baik dihindari. Hal ini disebabkan karena penggunaan virtual environment sangat dianjurkan untuk menjaga keteraturan, kejelasan, serta keterpeliharaan yang optimal dalam pengembangan proyek Django. Dengan cara ini, kita dapat menghindari masalah rumit yang terkait dengan konflik dependensi dan membuat manajemen dependensi proyek menjadi lebih mudah. Oleh karena itu, penting untuk selalu menggunakan virtual environment saat mengembangkan proyek Django.
