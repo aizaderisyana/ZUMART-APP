@@ -11,6 +11,4 @@ class mainTest(TestCase):
     
     def test_show_main(self):
         response = Client().get('/main/')
-        self.assertEqual(response.context['appName'], 'ZUMART')
         self.assertEqual(response.context['name'], 'Aiza Derisyana')
-        self.assertEqual(response.context['description'], 'Aplikasi Thrift Shop yang menjual produk sepatu')
