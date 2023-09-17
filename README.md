@@ -188,6 +188,9 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
     > Penggunaan postman
     Pastikan server sudah berjalan dengan perintah python manage.py runserver.
     Buka postman dan tambahkan http://localhost:8000/xml atau http://localhost:8000/json dalam request GET. Lalu klik Send. Response dapat dilihat di bagian bawah postman.
+<img width="1440" alt="Screenshot 2023-09-16 at 22 47 12" src="https://github.com/aizaderisyana/ZUMART-APP/assets/82081149/19251792-0440-4e8c-b478-52212156c65e">
+<img width="1440" alt="Screenshot 2023-09-16 at 22 47 22" src="https://github.com/aizaderisyana/ZUMART-APP/assets/82081149/92676079-81ba-45ae-a78f-bf0909f77b85">
+<img width="1440" alt="Screenshot 2023-09-16 at 22 47 41" src="https://github.com/aizaderisyana/ZUMART-APP/assets/82081149/b91b29fe-89b3-47da-b77c-e9f7fced22b8">
 
 
 ======================================================================================================
