@@ -1,7 +1,44 @@
-<h1 style="background-color: #2a5bd1;">{{appName}}</h1>
-<p>{{ description }}<p>
+{% extends 'base.html' %}
 
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ kelas }}<p>
+{% block content %}
+
+<h1 style="background-color: #2a5bd1;">ZUMART</h1>
+
+<p>ZUMART merupakan Thrift Shop yang menjual berbagai jenis sepatu keren dan ramah di kantong.<p>
+
+    <p>Kamu menyimpan {{ item_count }} item pada aplikasi ini.</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+    
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    
+        {% for item in items %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.size}}</td>
+                <td>{{item.color}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.description}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <br/>
+    
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Item
+        </button>
+    </a>
+
+ <p>By Aiza Derisyana from PBP C.<p>
+
+{% endblock content %}
