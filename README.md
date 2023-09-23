@@ -6,7 +6,7 @@ Adaptable   : https://zumartapp.adaptable.app
 Tugas 4
 
 Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
-    UserCreationForm dalam Django adalah formulir bawaan yang sangat berguna untuk membuat formulir pendaftaran pengguna dalam aplikasi web dengan cepat. Kelebihannya dari UserCreationForm yaitu kemudahan penggunaan, validasi otomatis untuk memastikan bahwa input yang dimasukkan oleh pengguna valid dan sesuai dengan kebutuhan aplikasi dan integrasi yang baik dengan sistem keamanan Django. Kekurangannya adalah keterbatasan fitur untuk pendaftaran karena hanya menyediakan field untuk username, password, dan email. Serta Tampilan default yang mungkin tidak sesuai dengan desain aplikasi yang dibuat, sehingga perlu dilakukan penyesuaian tampilan.
+UserCreationForm dalam Django adalah formulir bawaan yang sangat berguna untuk membuat formulir pendaftaran pengguna dalam aplikasi web dengan cepat. Kelebihannya dari UserCreationForm yaitu kemudahan penggunaan, validasi otomatis untuk memastikan bahwa input yang dimasukkan oleh pengguna valid dan sesuai dengan kebutuhan aplikasi dan integrasi yang baik dengan sistem keamanan Django. Kekurangannya adalah keterbatasan fitur untuk pendaftaran karena hanya menyediakan field untuk username, password, dan email. Serta Tampilan default yang mungkin tidak sesuai dengan desain aplikasi yang dibuat, sehingga perlu dilakukan penyesuaian tampilan.
 
 Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
     Autentikasi adalah proses verifikasi identitas pengguna dengan memeriksa apakah username dan password yang dimasukkan oleh pengguna cocok dengan data yang tersimpan di database. Autentikasi adalah langkah pertama dalam menjaga keamanan aplikasi dan mencegah akses oleh pengguna yang tidak sah. Autentikasi penting untuk memastikan bahwa hanya pengguna yang identitasnya terverifikasi memiliki hak akses ke aplikasi atau sumber daya tertentu.
@@ -23,7 +23,8 @@ Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apaka
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 Fungsi Registrasi
-    1. Pertama jalankan terlebih dahulu virtual enviroment dengan ‘source env/bin/activate’
+    
+	1. Pertama jalankan terlebih dahulu virtual enviroment dengan ‘source env/bin/activate’
 
     2. Buka main/views.py dan tambahkan import 
     from django.shortcuts import redirect
@@ -153,7 +154,7 @@ Fungsi Login
     5. Tambahkan  dalam urlpatterns 'path('login/', login_user, name='login'),'
 
 
-    Fungsi Logout
+Fungsi Logout
 
     1. Buka main/views dan tambahkan import 'from django.contrib.auth import logout'
 
@@ -174,7 +175,7 @@ Fungsi Login
     5. Tambahkan  dalam urlpatterns 'path('logout/', logout_user, name='logout'),'
 
 
-    Menerapkan Cookies
+Menerapkan Cookies
     
     1.  Buka main/views.py lalu lakukan 'import datetime'
 
@@ -216,8 +217,8 @@ Fungsi Login
     
     5. Buka templates/main.html dan tambahkan kode '<h5>Sesi terakhir login: {{ last_login }}</h5>' diantara tabel dan tombol logout 
 
-
-    Hubungkan model Items dengan User
+ 
+Hubungkan model Items dengan User
 
     1. Buka main/models.py lalu lakukan impor 'from django.contrib.auth.models import User'
 
