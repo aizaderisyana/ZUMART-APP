@@ -4,31 +4,117 @@
     <title>Register</title>
 {% endblock meta %}
 
-{% block content %}  
+{% block content %}
+<style>
+    /* Background style */
+    body {
+        background-color: #ffffff; /* Blue color code */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-<div class = "login">
-    
-    <h1>Register</h1>  
+    /* Container style */
+    .login-container {
+        text-align: center;
+    }
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+    .login {
+        width: 500px; /* Adjust the width as needed */
+        padding: 20px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #0004ff, #9a9bef);
+        box-shadow: 0 5px 15px rgb(255, 255, 255);
+        text-align: center;
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+    /* Form element style */
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+    }
+
+    /* Login button style */
+    .login_btn {
+        background-color: #000004;
+        color: rgb(255, 255, 255);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .login_btn:hover {
+        background-color: #160808; 
+    }
+
+    /* Error message style */
+    .error-message {
+        color: rgb(255, 0, 0);
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    /* Futuristic font style */
+    .title {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 20px;
+        font-size: 40px; 
+        letter-spacing: 2px; 
+    }
+
+    /* Link style */
+    a {
+        color: #060858;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #010d43dc;
+    }
+
+    /* Update style */
+    .upd {
+        color: #ffffff;
+    }
+
+    .r{
+        color: #ffffff;  
+    }
+</style>
+
+<div class="login-container">
+    <div class="login">
+        <h1 class="title">Register</h1>
+        <form method="POST" class="r">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <input type="submit" class="login_btn" name="submit" value="Daftar" />
         </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
-
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li class="error-message">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
 {% endblock content %}

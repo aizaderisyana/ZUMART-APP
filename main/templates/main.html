@@ -2,11 +2,167 @@
 
 {% block content %}
 
-<h1 style="background-color: #2a5bd1;">ZUMART</h1>
+<style>
+    body {
+        background: linear-gradient(135deg, #0004ff, #ffffff);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
 
-<p>ZUMART merupakan Thrift Shop yang menjual berbagai jenis sepatu keren dan ramah di kantong.<p>
+    nav {
+        background-color: #0004ff;
+        color: #fff;
+        width: 100%;
+        padding: 10px 0;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
 
-    <p>Kamu menyimpan {{ item_count }} item pada aplikasi ini.</p>
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    nav li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    nav a:hover {
+        color: #0057b3;
+    }
+
+    .user-name {
+        margin-right: 20px;
+        font-size: 18px;
+    }
+
+    .logout-button {
+        background-color: #fff;
+        color: #0004ff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-button:hover {
+        background-color: #0004ff;
+        color: #fff;
+    }
+
+    .content-container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        width: 80%;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #0004ff;
+        font-weight: bold;
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    h5 {
+        color: #333;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    p {
+        color: #333;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    a {
+        color: #0004ff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #0057b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #0004ff;
+    }
+
+    th {
+        background-color: #0004ff;
+        color: #fff;
+    }
+
+    button {
+        background-color: #0004ff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+    }
+
+    button:hover {
+        background-color: #0004ff;
+    }
+
+    .c {
+        font-size: 8px;
+    }
+</style>
+
+<nav>
+    <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Produk</a></li>
+        <li><a href="#">Kontak</a></li>
+    </ul>
+    <div class="user-info">
+        <span class="user-name">{{name}}</span>
+        <a href="{% url 'main:logout' %}" class="logout-button">Logout</a>
+    </div>
+</nav>
+
+<div class="content-container">
+    <h1>ZUMART</h1>
+
+    <p>Menampilkan {{ item_count }} barang {{name}}.</p>
+
     <table>
         <tr>
             <th>Name</th>
@@ -15,10 +171,11 @@
             <th>Amount</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Actions</th>
         </tr>
-    
+
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
+
         {% for item in items %}
             <tr>
                 <td>{{item.name}}</td>
@@ -27,26 +184,31 @@
                 <td>{{item.amount}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.description}}</td>
+                <td>
+                    <a href="{% url 'main:edit_item' item.pk %}">
+                        <button>Edit</button>
+                    </a>
+                    <a href="{% url 'main:delete_item' item.pk %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
-    
+
     <br/>
 
     <h5>Sesi terakhir login: {{ last_login }}</h5>
-    
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Item
-        </button>
+
+    <a href="{% url 'main:create_item' %}">
+        <button>Add New Item</button>
     </a>
 
     <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
+        <button>Logout</button>
     </a>
 
- <p>By Aiza Derisyana from PBP C.<p>
+    <p class="c">By Aiza Derisyana from PBP C.</p>
+</div>
 
 {% endblock content %}

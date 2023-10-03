@@ -3,6 +3,107 @@ NPM         : 2206082436
 Kelas       : PBP C
 Adaptable   : https://zumartapp.adaptable.app
 
+
+
+TUGAS 5
+
+Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya. 
+    Element Selector 
+    Element Selector digunakan untuk mengubah properti pada semua elemen dengan tag HTML yang sama. Dengan menggunakan selector ini,  kita dapat dengan mudah mengubah gaya elemen-elemen dengan tag yang sama di seluruh halaman web. Element Selector cocok digunakan ketika ingin menerapkan gaya umum pada semua elemen dengan tipe tertentu di halaman web. Ini sering digunakan untuk mengatur gaya dasar seperti huruf tebal, ukuran font, atau jarak antar elemen.
+
+    ID Selector 
+    ID Selector digunakan untuk memilih elemen berdasarkan ID unik yang diberikan pada tag HTML. ID harus unik dalam satu halaman web, sehingga selector ini memungkinkan kita untuk secara khusus mengganti properti elemen dengan ID tertentu.
+
+    Class Selector 
+    Class Selector memungkinkan kita mengklasifikasikan item dengan kualitas terkait dan memodifikasi properti tersebut untuk kelompok komponen tertentu.
+    Sebuah elemen mungkin termasuk dalam satu atau lebih kelas, dan banyak instance dari kelas yang sama dapat diberi gaya sekaligus.
+    Class selector sangat berguna ketika ingin menerapkan gaya yang sama pada beberapa elemen dengan atribut class yang sama. Ini memungkinkan kita untuk mengelompokkan elemen dan menerapkan gaya dengan presisi.
+
+Jelaskan HTML5 Tag yang kamu ketahui.
+    Bentuk HTML terbaru, yaitu HTML5 digunakan untuk membuat halaman web. HTML5 Tag biasa digunakan sebagai:
+    <header> = Menunjukkan bagian atas halaman atau awal bagian tertentu di dalamnya.
+    <nav> = Menentukan bagian navigasi halaman.
+    <section> = Mengelompokkan informasi di situs web yang relevan dengan subjek tertentu menjadi beberapa bagian.
+    <Artikel> = Aalah contoh materi tersendiri yang dapat ditemukan di bagian halaman tertentu.
+    <aside> = Segmen yang terkait dengan materi terdekat lainnya ditetapkan sebagai "sampingan" menggunakan sidebar atau kotak informasi sebagai contoh.
+    <footer> = Menjelaskan bagian bawah halaman atau bagian tertentu.
+    Ada beberapa tag HTML5 lain yang dapat digunakan untuk menambahkan media dan grafik ke halaman web, antara lain <video>, <audio>, <canvas>, dan <svg>. 
+
+Jelaskan perbedaan antara margin dan padding.
+    Margin dan padding adalah properti CSS yang digunakan untuk mengatur ruang di sekitar dan di dalam elemen HTML, yang digunakan dalam desain dan tata letak web untuk menentukan ruang antara elemen dan komponen di sekitarnya serta ruang antara konten elemen dan batasnya.
+    Perbedaan keduanya adalah margin, yang memiliki nilai default 0, dapat diberikan hingga empat kali untuk setiap elemen, menentukan jarak dari tepi elemen dan menyisakan ruang di sekitarnya tanpa mengubah ukurannya. Di sisi lain, padding hanya dapat diberikan hingga empat kali untuk setiap elemen dan menentukan jarak dari dalam elemen, memberikan ruang di dalam elemen, dan dapat membuat elemen lebih besar atau lebih kecil. Padding memiliki nilai default 0. 
+
+Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan 
+    sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+    Perbedaan antara framework CSS Tailwind dan Bootstrap adalah Tailwind membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya, memiliki file CSS yang lebih kecil, memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek, tetapi memerlukan pembelajaran yang lebih curam. Sementara itu, Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, memiliki file CSS yang lebih besar, sering menghasilkan tampilan yang konsisten di seluruh proyek, dan memiliki pembelajaran yang lebih cepat untuk pemula karena dapat mulai dengan komponen yang telah didefinisikan.
+    Bootstrap dapat menjadi pilihan yang tepat jika ingin membuat situs web lengkap dengan banyak komponen siap pakai dan gaya yang lebih kontemporer. Hal ini karena bootstrap memiliki semua karakteristik tersebut. Namun, ukuran file yang dimiliki Bootstrap lebih tinggi.
+    Di sisi lain, Tailwind bisa menjadi pilihan yang baik jika ingin membuat komponen secara modular, memiliki kontrol lebih besar terhadap desain, dan memberikan tampilan yang lebih minimalis. Tailwind dapat memberikan transmisi yang lebih besar dalam hal desain dan memiliki ukuran file yang lebih kecil.
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+    Tambahkan Bootstrap, CSS, JS ke aplikasi melalu templates/base.html seperti berikut
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock meta %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    </head>
+    Menambahkan navigation bar di main.html
+    Menambah fitur edit_item dalam main/views.py seperti berikut
+    def edit_item(request, id):
+        product = Items.objects.get(pk = id)
+        form = ItemForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    context = {'form': form}
+    return render(request, "edit_item.html", context)
+    Mebuat berkas baru yaitu edit_item.html dalam main/templates seperti berikut
+
+    </style>
+    <div class="content-container">
+    <h1>Edit Item</h1>
+    <form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Edit Item"/>
+            </td>
+        </tr>
+    </table>
+    </form>
+
+    {% endblock %}
+    Lalu menambahkan selectronya 
+    Membuka main/urls.py lalu menambah ‘’’from main.views import edit_item’’’
+    Tambahkan ‘’’path('edit-item/<int:id>', edit_item, name='edit_item'),’’’ dalam urlspatterns
+    Dalam main.html di main/templates, tambahkan kode berikut
+    <td>
+        <a href="{% url 'main:edit_item' item.pk %}">
+            <button>Edit</button>
+        </a>
+    Menambah fitur delete_item dalam main/views.py seperti berikut
+    def delete_item(request, id):
+    item = Items.objects.get(pk = id)
+    item.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+    Membuka main/urls.py lalu menambah ‘’’from main.views import delete_item’’’
+    Tambahkan ‘’’path('delete/<int:id>', delete_item, name='delete_item'), ‘’’dalam urlspatterns
+    Dalam main.html di main/templates, tambahkan kode berikut
+    </a>
+        <a href="{% url 'main:delete_item' item.pk %}">
+            <button>Delete</button>
+        </a>
+    Jalankan aplikasi dengan ‘’’python manage.py runserver’’’ dan buka http://localhost:8000  
+
+===========================================================================================================================================================
+===========================================================================================================================================================
+
 Tugas 4
 
 Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?

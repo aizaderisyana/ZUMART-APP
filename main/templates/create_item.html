@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    /* Set the background color to a gradient */
+    body {
+        background: linear-gradient(135deg,#0004ff, #ffffff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Center the content horizontally and add some styling */
+    .content-container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        width: 80%;
+        max-width: 800px;
+        max-height: 80vh; /* Set a maximum height for the container */
+        overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+    }
+
+    /* Style headings */
+    h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #0004ff;
+        font-weight: 560;
+        font-size: 38px;
+    }
+
+    /* Style paragraphs and links */
+    p {
+        color: #333;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    /* Style the form */
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid rgb(255, 255, 255);
+    }
+
+    th {
+        background-color: #0004ff;
+        color: #fff;
+    }
+
+    /* Style form inputs */
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        background-color: #ffffff;
+        color: #333;
+        font-size: 16px;
+    }
+
+    /* Style form submit button */
+    input[type="submit"] {
+        background-color: #0004ff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0004ff; 
+    }
+</style>
+
+<div class="content-container">
+    <h1>Add your shoes !</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Add Product"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% endblock %}
