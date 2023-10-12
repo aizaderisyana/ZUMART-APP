@@ -3,8 +3,8 @@
 {% block content %}
 
 <style>
-    body {
-        background: linear-gradient(135deg, #0004ff, #ffffff);
+      body {
+        background: linear-gradient(135deg, #0004ff, #ff6600);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -12,13 +12,13 @@
     }
 
     nav {
-        background-color: #0004ff;
+        background-color: #0004ff; 
         color: #fff;
         width: 100%;
         padding: 10px 0;
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     nav ul {
@@ -41,7 +41,7 @@
     }
 
     nav a:hover {
-        color: #0057b3;
+        color: #0f66c3; 
     }
 
     .user-name {
@@ -50,50 +50,58 @@
     }
 
     .logout-button {
-        background-color: #fff;
-        color: #0004ff;
+        color: #ffffff; 
+        margin-right: 20px;
         border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
         cursor: pointer;
         font-size: 18px;
         transition: background-color 0.3s ease;
     }
 
     .logout-button:hover {
-        background-color: #0004ff;
+        background-color: #0205a5d5; 
         color: #fff;
     }
 
     .content-container {
         text-align: center;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        width: 100%;
+        max-width: 1000px;
         border-radius: 10px;
         padding: 20px;
         width: 80%;
-        max-width: 800px;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
+        max-width: 1000px;
+        }
+
 
     h1 {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 58px;
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #0004ff;
         font-weight: bold;
-        font-size: 48px;
-        margin-bottom: 20px;
+        font-size: 58px;
+        margin-bottom: 40px;
     }
 
     h5 {
-        color: #333;
-        margin-top: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(244, 244, 244);
+        margin-top: 10px;
+        margin-bottom: 20px;
         font-size: 18px;
     }
 
     p {
-        color: #333;
-        font-size: 18px;
+        color: rgb(255, 252, 252);
+        font-size: 10px;
         margin-top: 20px;
     }
 
@@ -107,42 +115,75 @@
         color: #0057b3;
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
+ 
+    .card-item {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+        justify-content: center;
     }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #0004ff;
-    }
-
-    th {
-        background-color: #0004ff;
-        color: #fff;
-    }
-
-    button {
-        background-color: #0004ff;
-        color: #fff;
+    .card {
         border: none;
-        padding: 10px 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #0004ff;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #333;
+        margin-top: 5px;
+    }
+
+    .btn-edit-delete {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .btn-edit-delete a,
+    .btn-edit-delete button {
+        text-decoration: none;
+        padding: 8px 16px;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 18px;
-        transition: background-color 0.3s ease;
-        margin: 10px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    button:hover {
+    .btn-edit-delete a {
         background-color: #0004ff;
+        color: #fff;
     }
 
-    .c {
-        font-size: 8px;
+    .btn-edit-delete a:hover {
+        background-color: #0104a3;
     }
+
+    .btn-edit-delete button {
+        background-color: #ff6600;
+        color: #fff;
+    }
+
+    .btn-edit-delete button:hover {
+        background-color: #800202;
+    }
+</style>
+
 </style>
 
 <nav>
@@ -158,56 +199,169 @@
     </div>
 </nav>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="col-form-label">Size:</label>
+                        <input type="number" class="form-control" id="size" name="size"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="col-form-label"> Color:</label>
+                        <input type="text" class="form-control" id="color" name="color"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
 <div class="content-container">
     <h1>ZUMART</h1>
+    <h5>Menampilkan {{ item_count }} barang {{name}}.</h5>
 
-    <p>Menampilkan {{ item_count }} barang {{name}}.</p>
+    <div class="card-item" id="product-cards">
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Color</th>
-            <th>Amount</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    </div>
 
-        {% for item in items %}
-            <tr>
-                <td>{{item.name}}</td>
-                <td>{{item.size}}</td>
-                <td>{{item.color}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.price}}</td>
-                <td>{{item.description}}</td>
-                <td>
-                    <a href="{% url 'main:edit_item' item.pk %}">
-                        <button>Edit</button>
-                    </a>
-                    <a href="{% url 'main:delete_item' item.pk %}">
-                        <button>Delete</button>
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    <script>
+        async function getItems() {
+            return fetch("{% url 'main:get_item_json' %}").then((res) => res.json());
+        }
 
-    <br/>
+        async function refreshItems() {
+            const products = await getItems();
+            const cardContainer = document.getElementById("product-cards");
+            cardContainer.innerHTML = "";
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+            products.forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "card mx-auto p-3";
+                card.style.width = "18rem";
 
-    <a href="{% url 'main:create_item' %}">
-        <button>Add New Item</button>
-    </a>
+                const cardBody = document.createElement("div");
+                cardBody.className = "card-body";
 
-    <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-    </a>
+                const cardTitle = document.createElement("h4");
+                cardTitle.className = "card-title";
+                cardTitle.textContent = item.fields.name;
 
+                const cardText1 = document.createElement("p");
+                cardText1.className = "card-text";
+                cardText1.textContent = "Size " + item.fields.size;
+
+                const cardText2 = document.createElement("p");
+                cardText2.className = "card-text";
+                cardText2.textContent = "Color: " + item.fields.color;
+
+                const cardText3 = document.createElement("p");
+                cardText3.className = "card-text";
+                cardText3.textContent = "Amount: " + item.fields.amount;
+
+                const cardText4 = document.createElement("p");
+                cardText4.className = "card-text";
+                cardText4.textContent = "Price: "+ item.fields.price;
+
+                const cardText5 = document.createElement("p");
+                cardText5.className = "card-text";
+                cardText5.textContent = item.fields.description;
+
+                const btnContainer = document.createElement("div");
+                btnContainer.className = "btn-edit-delete";
+
+                const editButton = document.createElement("a");
+                editButton.className = "btn btn-outline-warning";
+                editButton.href = `edit-item/${item.pk}`;
+                editButton.textContent = "Edit";
+                editButton.onclick = () => editItem(item.pk);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "btn btn-outline-danger";
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = () => deleteItem(item.pk);
+
+                cardContainer.appendChild(card);
+                card.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText1);
+                cardBody.appendChild(cardText2);
+                cardBody.appendChild(cardText3);
+                cardBody.appendChild(cardText4);
+                cardBody.appendChild(cardText5);
+                cardBody.appendChild(btnContainer);
+                btnContainer.appendChild(editButton);
+                btnContainer.appendChild(deleteButton);
+            });  
+        }
+
+        function addItem() {
+            fetch("{% url 'main:add_item_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems);
+
+            document.getElementById("form").reset();
+            return false;
+        }
+
+    function editItem(itemId) {
+        fetch(`{% url 'main:edit_item' 0 %}`.replace("0", itemId), {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+        window.location.href = `/edit-item/${itemId}`;
+        document.getElementById("form").reset()
+        return false
+    }
+
+    function deleteItem(itemId) {
+        fetch(`{% url 'main:delete_item' 0 %}`.replace("0", itemId), {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+
+    refreshItems();
+    </script>
+
+    <p>Sesi terakhir login: {{ last_login }}</p>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+    
     <p class="c">By Aiza Derisyana from PBP C.</p>
 </div>
 

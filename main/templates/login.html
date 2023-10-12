@@ -8,11 +8,12 @@
 
 <style>
     body {
-        background-color: #ffffff;
+        background: linear-gradient(135deg, #0004ff, #ff6600);
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        margin: 0;
     }
 
     .login-container {
@@ -24,44 +25,50 @@
         padding: 20px;
         border: none;
         border-radius: 10px;
-        background: linear-gradient(45deg, #0004ff, #9a9bef);
-        box-shadow: 0 5px 15px rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         text-align: center;
     }
 
     .form-control {
         width: 100%;
         padding: 10px;
-        margin-bottom: 10px;
-        border: none;
+        margin-bottom: 15px;
+        border: 1px solid #0004ff; /* Blue border */
         border-radius: 5px;
-        background-color: #f5f5f5;
-        color: rgb(255, 255, 255);
+        background-color: #fff;
+        color: #333;
         font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #0104a3; /* Darker blue when focused */
     }
 
     .log {
         margin-bottom: 20px;
-
+        color: #0004ff;
+        font-weight: bold;
     }
 
     .login_btn {
-        background-color: #000004;
-        color: rgb(255, 255, 255);
+        background-color: #0004ff;
+        color: #fff;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 20px;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 18px;
         transition: background-color 0.3s ease;
     }
 
     .login_btn:hover {
-        background-color: #160808; 
+        background-color: #0104a3;
     }
 
     .error-message {
-        color: rgb(0, 0, 0);
+        color: #ff0000; /* Red for error messages */
         margin-top: 10px;
         font-size: 14px;
     }
@@ -69,10 +76,10 @@
     .title {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: bold;
-        color: #0004ff;
+        color: #ffffff;
         margin-bottom: 20px;
-        font-size: 40px; 
-        letter-spacing: 2px; 
+        font-size: 50px;
+        letter-spacing: 2px;
     }
 
     a {
@@ -85,10 +92,13 @@
         color: #010d43dc;
     }
 
-    .upd{
-        color: #ffffff;     
+    
+    .upd {
+        color: #0004ff;
     }
 </style>
+</style>
+
 
 <div class="login-container">
     <h1 class="title">ZUMART</h1>
@@ -100,12 +110,12 @@
             {% csrf_token %}
             <table>
                 <tr>
-                    <td class="upd">Username: </td>
+                    <td class="log">Username: </td>
                     <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
                 </tr>
                         
                 <tr>
-                    <td class="upd">Password: </td>
+                    <td class="log">Password: </td>
                     <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
                 </tr>
 

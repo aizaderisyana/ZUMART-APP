@@ -4,7 +4,7 @@
 
 <style>
     body {
-        background: linear-gradient(135deg,#0004ff, #ffffff);
+        background: linear-gradient(135deg, #0004ff, #ff6600);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -13,20 +13,19 @@
 
     .content-container {
         text-align: center;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        background: #0004ff;
         border-radius: 10px;
         padding: 20px;
         width: 80%;
         max-width: 800px;
-        max-height: 80vh; 
-        overflow-y: auto; 
+        max-height: 80vh;
+        overflow-y: auto;
     }
 
     h1 {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #0004ff;
-        font-weight: 560;
+        color: #ffffff;
+        font-weight: bold;
         font-size: 38px;
     }
 
@@ -51,27 +50,27 @@
     th, td {
         padding: 10px;
         text-align: left;
-        border-bottom: 1px solid rgb(255, 255, 255);
     }
 
     th {
         background-color: #0004ff;
-        color: #fff;
+        color: #ffffff;
     }
 
-    input[type="text"], input[type="number"] {
+    input[type="text"],
+    input[type="number"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
-        border: 1px solid rgb(255, 255, 255);
+        border: 1px solid #000113; 
         border-radius: 5px;
-        background-color: #ffffff;
-        color: #333;
+        background-color: #fff;
+        color: #000000; 
         font-size: 16px;
     }
 
     input[type="submit"] {
-        background-color: #0004ff;
+        background-color: #ff6600;
         color: #fff;
         border: none;
         padding: 10px 20px;
@@ -82,9 +81,10 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #0004ff; 
+        background-color: #b84b01; 
     }
 </style>
+
 
 <div class="content-container">
 <h1>Edit Item</h1>

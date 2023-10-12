@@ -4,6 +4,56 @@ Kelas       : PBP C
 Adaptable   : https://zumartapp.adaptable.app
 
 
+Tugas 6
+
+Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+    Synchronous programming
+    Pekerjaan diselesaikan satu tugas dalam satu waktu, dan tugas berikutnya hanya dibuka blokirnya setelah tugas sebelumnya selesai.
+    Karena desainnya yang linier dan berurutan, kode mengalir dengan lancar dari atas ke bawah, membuatnya lebih mudah untuk dibuat dan dipahami.
+    Setiap bahasa pemrograman mendukungnya, dan sistem reaktif adalah tempat M kerjanya
+    Asynchronous programming 
+    Pekerjaan berjalan secara bersamaan tanpa harus menunggu aktivitas lainnya selesai.
+    Desain non-pemblokirannya mencegah eksekusi tambahan berlanjut saat satu atau lebih tindakan sedang berjalan.
+    Ini sering digunakan untuk meningkatkan pengalaman pengguna dengan menawarkan alur pemuatan yang mudah dan cepat
+
+
+Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+    Paradigma event-driven programming adalah sebuah pendekatan dalam pemrograman di mana program berinteraksi dengan peristiwa-peristiwa (events) yang terjadi selama eksekusi program. Program ini akan merespons peristiwa-peristiwa tersebut dengan menjalankan tindakan atau kode tertentu yang terkait dengan peristiwa tersebut. Dalam paradigma ini, program akan terus berjalan dan siap menerima serta merespons peristiwa-peristiwa yang terjadi, sehingga program dapat berinteraksi secara dinamis dengan lingkungannya.
+    Salah satu contoh penerapan paradigma event-driven programming pada tugas ini adalah penggunaan event listener dan handling pada elemen-elemen HTML, yaitu:
+    document.getElementById("button_add").onclick = addItem;
+
+
+Jelaskan penerapan asynchronous programming pada AJAX.
+
+    AJAX menekankan pemrograman asynchronous sebagai komponen penting. Pemrograman asynchronous memungkinkan pelaksanaan banyak tugas secara bersamaan tanpa menghalangi penyelesaian tugas lainnya. Pemrograman asynchronous digunakan dalam konteks AJAX untuk mengirim dan menerima data dari server tanpa memerlukan pemuatan ulang halaman. Hasilnya, pengalaman pengguna lebih responsif dan interaktif.
+    Permintaan asynchronous untuk mendapatkan atau memperbarui data dikirim ke server setiap kali pengguna berinteraksi dengan halaman web yang didukung AJAX, misalnya dengan mengklik tombol. Halaman web dapat melakukan tugas lain, termasuk menyegarkan interface pengguna atau mengelola interaksi pengguna lainnya, sambil menunggu server merespons. Setelah menerima tanggapan, situs web dapat mengubah antarmuka pengguna.
+
+    Penerapan AJAX untuk pemrograman asynchronous yaitu:
+    Menggunakan Fungsi Call back: Saat menggunakan AJAX, praktik umum adalah mengirimkan permintaan ke server dan kemudian menentukan fungsi panggilan balik yang akan dipanggil setelah jawaban server diterima. Hasilnya, program ini dapat terus berjalan dan beradaptasi seiring dengan tersedianya data baru.
+    Promises: Hasil permintaan AJAX atau data lain yang belum dapat diakses diwakili oleh janji, objek JavaScript. Penggunadapat menyediakan fungsi untuk dipanggil apakah suatu janji dipenuhi atau tidak.
+    Async/Await: Fitur JavaScript baru yang berfungsi mirip dengan kode sinkron, async/await memungkinkan Pengguna menulis kode asinkron. Pengguna dapat menetapkan suatu fungsi sebagai "async" dan kemudian menggunakan "await" untuk menghentikan sementara eksekusi sambil menunggu hasil operasi async.
+
+Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+    Pilihan antara Fetch API dan jQuery tergantung pada konteks proyek dan preferensi pribadi. Jika ingin melakukan pengembangan web modern dan berfokus pada kecepatan, performa, dan kontrol lebih besar atas kode, maka Fetch API adalah pilihan yang baik. Ini juga merupakan pilihan yang baik jika ingin menghindari ketergantungan pada pustaka pihak ketiga. Namun, jQuery masih dapat lebih baik digunakan saat perlu menggunakan browser lama atau ingin memanfaatkan banyak plugin dan sintaksis yang lebih ringkas. Pengguna juga dapat mempertimbangkan untuk mendasarkan aplikasi pada Fetch API dan cukup menggunakan jQuery bila diperlukan untuk mengatasi situasi unik atau meningkatkan kompatibilitas lintas-browser.
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    1. Di main.html, buat elemen HTML dengan ID tertentu di mana akan menampilkan daftar item (contoh: <div id="product-cards"></div>).
+    2.Buat fungsi JavaScript getItems yang menggunakan fetch untuk mengambil data item menggunakan AJAX GET dari URL yang sesuai (dalam contoh, aURLnya adalah {% url 'main:get_item_json' %}).
+    3. Buat fungsi JavaScript refreshItems yang akan memanggil getItems dan kemudian memperbarui tampilan halaman dengan daftar item yang diambil dari respons.
+    4. Buat tombol atau elemen HTML yang akan membuka modal untuk menambahkan item baru.
+    5. Di dalam modal, buat formulir yang akan mengizinkan pengguna memasukkan data untuk item baru.
+    6. Buat fungsi JavaScript addItem yang menggunakan fetch untuk mengirim data formulir menggunakan AJAX POST ke URL yang sesuai (dalam contoh, URLnya adalah {% url 'main:add_item_ajax' %}).
+    7. Setelah penambahan item berhasil, tutup modal dengan data-bs-dismiss="modal" dan bersihkan formulir dari data yang telah dimasukkan.
+    8. Tambahkan path baru ke urls.py yang mengarahkan ke view yang baru buat (path add_item_ajax).
+    9. Hubungkan formulir di dalam modal dengan path add_item_ajax.
+    10. Lakukan runserver
+
+
+===========================================================================================================================================================
+===========================================================================================================================================================
 
 TUGAS 5
 
@@ -394,7 +444,9 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
         </body>
     </html>
 
-    Lalu buka settings.py dan cari baris yang mengandung templates dan tambahkan 'DIRS': [BASE_DIR / 'templates']. Pada templates di dalam direktori main, ubah kode main.html menjadi:
+    Lalu buka settings.py dan cari baris yang mengandung templates dan tambahkan 'DIRS': [BASE_DIR / 'templates']. 
+
+    Pada templates di dalam direktori main, ubah kode main.html menjadi:
     {% extends 'base.html' %}
     {% block content %}
     <h1 style="background-color: #2a5bd1;">ZUMART</h1>
@@ -433,15 +485,15 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
     Selanjutnya ubah kode show_main menjadi:
 
     def show_main(request):
-    items = Items.objects.all()
-    item_count = items.count()
-    context = {
-        'name' : 'Aiza Derisyana',
-        'kelas' : 'PBP C',
-        'items' : items,
-        'item_count': item_count
-    }
-    return render(request, "main.html", context)
+        items = Items.objects.all()
+        item_count = items.count()
+        context = {
+            'name' : 'Aiza Derisyana',
+            'kelas' : 'PBP C',
+            'items' : items,
+            'item_count': item_count
+        }
+        return render(request, "main.html", context)
 
     Lalu Buka urls.py yang ada pada folder main dan import fungsi create_product seperti from main.views import show_main, create_product dan tambahkan path url ke dalam urlpatterns pada urls.py di main seperti path('create-product', create_product, name='create_product'), untuk mengakses fungsi yang sudah di-import sebelumnya.
     Selanjutnya buat berkas HTML baru bernama create_product.html dalam direktori main dan templates dan tambahkan kode berikut:

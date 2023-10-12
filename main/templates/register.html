@@ -7,7 +7,7 @@
 {% block content %}
 <style>
     body {
-        background-color: #ffffff; 
+        background: linear-gradient(135deg, #0004ff, #ff6600);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -20,44 +20,49 @@
     }
 
     .login {
-        width: 500px; 
+        width: 500px;
         padding: 20px;
         border: none;
         border-radius: 10px;
-        background: linear-gradient(45deg, #0004ff, #9a9bef);
-        box-shadow: 0 5px 15px rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         text-align: center;
-        margin: 0 auto; 
+        margin: 0 auto;
     }
 
     .form-control {
         width: 100%;
         padding: 10px;
-        margin-bottom: 10px;
-        border: none;
+        margin-bottom: 15px;
+        border: 1px solid #0004ff; /* Blue border */
         border-radius: 5px;
-        background-color: #f5f5f5;
-        color: rgb(0, 0, 0);
+        background-color: #fff;
+        color: #333;
         font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #0104a3; /* Darker blue when focused */
     }
 
     .login_btn {
-        background-color: #000004;
-        color: rgb(255, 255, 255);
+        background-color: #0004ff;
+        color: #fff;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 20px;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 18px;
         transition: background-color 0.3s ease;
     }
 
     .login_btn:hover {
-        background-color: #160808; 
+        background-color: #0104a3;
     }
 
     .error-message {
-        color: rgb(255, 0, 0);
+        color: #ff0000; /* Red for error messages */
         margin-top: 10px;
         font-size: 14px;
     }
@@ -65,10 +70,10 @@
     .title {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: bold;
-        color: #ffffff;
+        color: #0004ff;
         margin-bottom: 20px;
-        font-size: 40px; 
-        letter-spacing: 2px; 
+        font-size: 40px;
+        letter-spacing: 2px;
     }
 
     a {
@@ -82,11 +87,7 @@
     }
 
     .upd {
-        color: #ffffff;
-    }
-
-    .r{
-        color: #ffffff;  
+        color: #0004ff;
     }
 </style>
 
