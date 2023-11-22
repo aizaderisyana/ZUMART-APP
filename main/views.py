@@ -1,7 +1,8 @@
 import datetime
+import json
 from django.shortcuts import render
 from .models import Items
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse
 from main.forms import ItemForm
 from django.urls import reverse
 from django.http import HttpResponse
@@ -117,9 +118,9 @@ def add_item_ajax(request):
         price = request.POST.get("price")
         description = request.POST.get("description")
         user = request.user
-        color =  request.POST.get("color")
-        amount =  request.POST.get("amount")
-        size =  request.POST.get("size")
+        color = request.POST.get("color")
+        amount = request.POST.get("amount")
+        size = request.POST.get("size")
 
         new_item = Items(name=name, price=price, description=description, user=user, color=color,amount=amount, size=size )
         new_item.save()
@@ -127,3 +128,24 @@ def add_item_ajax(request):
         return HttpResponse(b"CREATED", status=201)
         
     return HttpResponseNotFound()
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Items.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            description = data["description"],
+            amount = int(data["amount"])
+
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)

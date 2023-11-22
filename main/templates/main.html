@@ -263,85 +263,46 @@
             const products = await getItems();
             const cardContainer = document.getElementById("product-cards");
             cardContainer.innerHTML = "";
-
-            products.forEach((item) => {
-                const card = document.createElement("div");
-                card.className = "card mx-auto p-3";
-                card.style.width = "18rem";
-
-                const cardBody = document.createElement("div");
-                cardBody.className = "card-body";
-
-                const cardTitle = document.createElement("h4");
-                cardTitle.className = "card-title";
-                cardTitle.textContent = item.fields.name;
-
-                const cardText1 = document.createElement("p");
-                cardText1.className = "card-text";
-                cardText1.textContent = "Size " + item.fields.size;
-
-                const cardText2 = document.createElement("p");
-                cardText2.className = "card-text";
-                cardText2.textContent = "Color: " + item.fields.color;
-
-                const cardText3 = document.createElement("p");
-                cardText3.className = "card-text";
-                cardText3.textContent = "Amount: " + item.fields.amount;
-
-                const cardText4 = document.createElement("p");
-                cardText4.className = "card-text";
-                cardText4.textContent = "Price: "+ item.fields.price;
-
-                const cardText5 = document.createElement("p");
-                cardText5.className = "card-text";
-                cardText5.textContent = item.fields.description;
-
-                const btnContainer = document.createElement("div");
-                btnContainer.className = "btn-edit-delete";
-
-                const editButton = document.createElement("a");
-                editButton.className = "btn btn-outline-warning";
-                editButton.href = `edit-item/${item.pk}`;
-                editButton.textContent = "Edit";
-                editButton.onclick = () => editItem(item.pk);
-
-                const deleteButton = document.createElement("button");
-                deleteButton.className = "btn btn-outline-danger";
-                deleteButton.textContent = "Delete";
-                deleteButton.onclick = () => deleteItem(item.pk);
-
-                cardContainer.appendChild(card);
-                card.appendChild(cardBody);
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardText1);
-                cardBody.appendChild(cardText2);
-                cardBody.appendChild(cardText3);
-                cardBody.appendChild(cardText4);
-                cardBody.appendChild(cardText5);
-                cardBody.appendChild(btnContainer);
-                btnContainer.appendChild(editButton);
-                btnContainer.appendChild(deleteButton);
-            });  
+    
+    
+        products.forEach((item) => {
+            cardContainer.innerHTML += `
+                <div class="card-item">
+                    <div class="card mx-auto p-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h4 class="card-title">${item.fields.name}</h4>
+                            <p class="card-text">Price: ${item.fields.size}</p>
+                            <p class="card-text">Price: ${item.fields.color}</p>
+                            <p class="card-text">Price: ${item.fields.amount}</p>
+                            <p class="card-text">${item.fields.description}</p>
+                            <a style="justify-content: baseline;" href='edit-item/${item.pk}' class="btn btn-outline-warning" onclick="editItem(${item.pk})">Edit</a>
+                            <button style="justify-content: baseline;" class="btn btn-outline-danger" onclick="deleteItem(${item.pk})">Delete</button>
+                        </div>
+                    </div>
+                </div>`;
+        });
         }
 
-        function addItem() {
-            fetch("{% url 'main:add_item_ajax' %}", {
-                method: "POST",
-                body: new FormData(document.querySelector('#form'))
-            }).then(refreshItems);
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems);
 
-            document.getElementById("form").reset();
-            return false;
-        }
+        document.getElementById("form").reset();
+        return false;
+    }
+    document.getElementById("button_add").onclick = addItem
 
     function editItem(itemId) {
         fetch(`{% url 'main:edit_item' 0 %}`.replace("0", itemId), {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
-        }).then(refreshItems)
-        window.location.href = `/edit-item/${itemId}`;
-        document.getElementById("form").reset()
-        return false
+        }).then(() => {
+            refreshItems();
+            document.getElementById("form").reset();
+        });
+        return false;
     }
 
     function deleteItem(itemId) {
@@ -353,7 +314,7 @@
         document.getElementById("form").reset()
         return false
     }
-    document.getElementById("button_add").onclick = addItem
+   
 
     refreshItems();
     </script>
